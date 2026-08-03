@@ -51,6 +51,7 @@ $(document).ready(function() {
                         }
                     },
                     "pageLength": 10,
+                    "order": [],
                     "responsive": true,
                     "autoWidth": false
                 });

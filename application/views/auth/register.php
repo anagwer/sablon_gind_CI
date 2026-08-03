@@ -100,12 +100,22 @@
         <div class="row g-2 mb-4">
             <div class="col-md-6">
                 <label class="form-label fw-bold small text-secondary">Password</label>
-                <input type="password" name="password" class="form-control bg-light" placeholder="Min 6 karakter" required>
+                <div class="input-group">
+                    <input type="password" name="password" id="reg_password" class="form-control bg-light border-end-0" placeholder="Min 6 karakter" required>
+                    <button type="button" class="btn btn-light border border-start-0 text-muted toggle-password" data-target="reg_password">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
                 <?= form_error('password', '<small class="text-danger">', '</small>'); ?>
             </div>
             <div class="col-md-6">
                 <label class="form-label fw-bold small text-secondary">Ulangi Password</label>
-                <input type="password" name="confirm_password" class="form-control bg-light" placeholder="Konfirmasi" required>
+                <div class="input-group">
+                    <input type="password" name="confirm_password" id="reg_confirm_password" class="form-control bg-light border-end-0" placeholder="Konfirmasi" required>
+                    <button type="button" class="btn btn-light border border-start-0 text-muted toggle-password" data-target="reg_confirm_password">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
                 <?= form_error('confirm_password', '<small class="text-danger">', '</small>'); ?>
             </div>
         </div>
@@ -120,5 +130,24 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.querySelectorAll('.toggle-password').forEach(button => {
+    button.addEventListener('click', function() {
+        const targetId = this.getAttribute('data-target');
+        const input = document.getElementById(targetId);
+        const icon = this.querySelector('i');
+        
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            input.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    });
+});
+</script>
 </body>
 </html>

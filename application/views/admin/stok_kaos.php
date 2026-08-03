@@ -4,7 +4,7 @@
         <p class="text-muted mb-0">Kelola informasi bahan baku kaos, harga dasar, serta stok terperinci per ukuran (S - XXL).</p>
     </div>
     <button type="button" class="btn btn-primary rounded-pill px-4 shadow-sm fw-semibold" data-bs-toggle="modal" data-bs-target="#modalTambahKaos">
-        <i class="fas fa-plus me-1"></i> Tambah Kaos Baru
+        <i class="fas fa-plus me-1"></i> Tambah Produk
     </button>
 </div>
 
@@ -169,7 +169,7 @@
         <div class="modal-content border-0 shadow-lg rounded-4">
             <form action="<?= base_url('admin/tambah_kaos'); ?>" method="POST" enctype="multipart/form-data">
                 <div class="modal-header bg-light py-3">
-                    <h5 class="modal-title fw-bold text-dark"><i class="fas fa-plus-circle text-primary me-2"></i> Tambah Produk Kaos Baru</h5>
+                    <h5 class="modal-title fw-bold text-dark"><i class="fas fa-plus-circle text-primary me-2"></i> Tambah Produk Baru</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-4">

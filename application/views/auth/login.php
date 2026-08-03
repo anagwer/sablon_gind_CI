@@ -93,10 +93,16 @@
         </div>
 
         <div class="mb-4">
-            <label class="form-label fw-bold small text-secondary">Password</label>
+            <div class="d-flex justify-content-between align-items-center mb-1">
+                <label class="form-label fw-bold small text-secondary mb-0">Password</label>
+                <a href="<?= base_url('auth/lupa_password'); ?>" class="small text-primary text-decoration-none fw-semibold">Lupa Password?</a>
+            </div>
             <div class="input-group">
                 <span class="input-group-text bg-light border-end-0"><i class="fas fa-lock text-muted"></i></span>
-                <input type="password" name="password" class="form-control bg-light border-start-0" placeholder="Masukkan password" required>
+                <input type="password" name="password" id="login_password" class="form-control bg-light border-start-0 border-end-0" placeholder="Masukkan password" required>
+                <button type="button" class="btn btn-light border border-start-0 text-muted" id="togglePassword">
+                    <i class="fas fa-eye"></i>
+                </button>
             </div>
             <?= form_error('password', '<small class="text-danger">', '</small>'); ?>
         </div>
@@ -125,5 +131,20 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.getElementById('togglePassword')?.addEventListener('click', function() {
+    const input = document.getElementById('login_password');
+    const icon = this.querySelector('i');
+    if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+    } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+    }
+});
+</script>
 </body>
 </html>

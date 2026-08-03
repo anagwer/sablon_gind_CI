@@ -96,8 +96,8 @@
 
                     <div class="col-md-6">
                         <label class="form-label fw-bold text-secondary">Jumlah Pesanan (Pcs)</label>
-                        <input type="number" name="jumlah" id="jumlah_input" class="form-control form-control-lg rounded-3" value="12" min="1" required>
-                        <small class="text-muted">Masukkan jumlah kaos yang ingin disablon.</small>
+                        <input type="number" name="jumlah" id="jumlah_input" class="form-control form-control-lg rounded-3" value="12" min="12" required>
+                        <small class="text-muted">Masukkan jumlah kaos yang ingin disablon (<strong>Minimal 12 Pcs</strong>).</small>
                     </div>
                 </div>
 

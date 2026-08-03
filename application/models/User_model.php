@@ -42,4 +42,19 @@ class User_model extends CI_Model {
     public function count_users_by_role($role) {
         return $this->db->where('role', $role)->count_all_results('users');
     }
+
+    public function reset_password_by_identifier($identifier, $new_password) {
+        $this->db->group_start();
+        $this->db->where('username', $identifier);
+        $this->db->or_where('email', $identifier);
+        $this->db->group_end();
+        $user = $this->db->get('users')->row_array();
+
+        if ($user) {
+            $hashed = password_hash($new_password, PASSWORD_BCRYPT);
+            $this->db->where('id', $user['id']);
+            return $this->db->update('users', ['password' => $hashed]);
+        }
+        return FALSE;
+    }
 }

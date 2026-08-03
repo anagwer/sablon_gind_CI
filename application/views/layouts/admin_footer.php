@@ -51,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         }
                     },
                     "pageLength": 10,
+                    "order": [],
                     "responsive": true,
                     "autoWidth": false
                 });

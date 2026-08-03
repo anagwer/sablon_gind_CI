@@ -97,6 +97,34 @@ class Auth extends CI_Controller {
         }
     }
 
+    public function lupa_password() {
+        if ($this->session->userdata('user_id')) {
+            redirect('pelanggan/dashboard');
+        }
+
+        $this->form_validation->set_rules('identifier', 'Username / Email', 'required|trim');
+        $this->form_validation->set_rules('password', 'Password Baru', 'required|min_length[6]');
+        $this->form_validation->set_rules('confirm_password', 'Konfirmasi Password', 'required|matches[password]', [
+            'matches' => 'Konfirmasi password tidak sesuai.'
+        ]);
+
+        if ($this->form_validation->run() == FALSE) {
+            $data['title'] = 'Lupa Password - Gind Screen Printing';
+            $this->load->view('auth/lupa_password', $data);
+        } else {
+            $identifier = $this->input->post('identifier', TRUE);
+            $new_password = $this->input->post('password', TRUE);
+
+            if ($this->User_model->reset_password_by_identifier($identifier, $new_password)) {
+                $this->session->set_flashdata('success', 'Password berhasil diperbarui! Silakan login dengan password baru.');
+                redirect('auth/login');
+            } else {
+                $this->session->set_flashdata('error', 'Username atau Email tidak ditemukan dalam sistem.');
+                redirect('auth/lupa_password');
+            }
+        }
+    }
+
     public function logout() {
         $this->session->sess_destroy();
         redirect('auth/login');

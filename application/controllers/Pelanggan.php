@@ -25,7 +25,9 @@ class Pelanggan extends CI_Controller {
     public function buat_pesanan() {
         $this->form_validation->set_rules('kaos_id', 'Jenis Kaos', 'required');
         $this->form_validation->set_rules('ukuran', 'Ukuran Kaos', 'required');
-        $this->form_validation->set_rules('jumlah', 'Jumlah Pcs', 'required|numeric|greater_than[0]');
+        $this->form_validation->set_rules('jumlah', 'Jumlah Pcs', 'required|numeric|greater_than_equal_to[12]', [
+            'greater_than_equal_to' => '%s minimal 12 Pcs.'
+        ]);
 
         if ($this->form_validation->run() == FALSE) {
             $data['title'] = 'Buat Pesanan Baru - Gind Screen Printing';
